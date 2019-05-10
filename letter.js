@@ -10,13 +10,33 @@ That means the constructor should define:
     --Letter.js should not require any other files.
     */
 
-var testLetter = new Letter('a');
+
 
 function Letter(character) {
     // A string value to store the underlying character for the letter
     this.character = character;
-    // display character
-    // display underScore
+    this.guessed = false;
+    this.checkGuessed = function() {
+        if (this.guessed === true) {
+            console.log('You are correct!');
+            return character;
+        } else {
+            console.log('Sorry, that is incorrect!');
+            return ('_');
+        };
+    }
     console.log('gucci');
+    this.argument = function(userGuess) {
+        if(userGuess === this.character) {
+            this.guessed = true;
+            console.log('Not a match. Try again!');
+        } 
+    }
 };
+
+var testLetter = new Letter('a');
+console.log(testLetter);
+
 console.log(testLetter.character);
+console.log(testLetter.checkGuessed());
+console.log(testLetter.argument("J"));
